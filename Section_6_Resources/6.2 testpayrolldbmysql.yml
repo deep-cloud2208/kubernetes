@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+     name: testpod
+     labels:
+        env: test
+        business: payroll
+        tier: db
+        technology: mysql
+spec:
+     containers:
+     - name: pythonwebpage
+       image: deepcloud2208/k8s-eks-gke:latest
+       env:
+       - name: NAME
+         value: "python container inside a pod"
+     - name: httpwebpage
+       image: deepcloud2208/httpwebpagecontainer:latest

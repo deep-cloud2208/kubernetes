@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+      name: k8s-service-deployment
+      labels:
+         env: training
+         chapter: services
+spec:
+   replicas: 6
+   selector:
+      matchExpressions:
+         - {key: chapter, operator: In, values: ['services', 'namespaces']}
+         - {key: section, operator: In, values: ['seven']}
+   template:
+      metadata:
+         name: k8s-service-pod
+         labels:
+            env: training
+            chapter: services
+            section: seven
+      spec:
+         containers:
+         - name: httpwebpage
+           image: deepcloud2208/httpwebpagecontainer:latest
+           ports: 
+           - containerPort: 80

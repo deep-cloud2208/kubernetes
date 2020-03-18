@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+      name: nontemplated
+      labels:
+         env: replicasetdemo2
+spec:
+   replicas: 3
+   selector:
+      matchExpressions:
+         - {key: purpose, operator: In, values: [training, demo]}
+         - {key: topic, operator: In, values: [k8sreplicaset]}
+   template:
+      metadata:
+         name: standalonepod
+         labels:
+            purpose: training
+            topic: k8sreplicaset
+            subtopic: nontemplatedpod
+      spec:
+         containers:
+         - name: pythonwebpage
+           image: deepcloud2208/k8s-eks-gke:latest
+           env:
+           - name: NAME
+             value: "k8s ReplicaSet Demo"

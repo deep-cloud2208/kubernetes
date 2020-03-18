@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+      name: deplstrategyrecreate
+      labels:
+         topic: UpdateDeployment
+spec:
+   replicas: 3
+   strategy: 
+      type: Recreate
+   selector:
+      matchLabels:
+         topic: UpdateDeploymentRecreate
+   template:
+      metadata:
+         name: httppod_old
+         labels:
+            topic: UpdateDeploymentRecreate
+      spec:
+         containers:
+         - name: httpwebpage
+           image: deepcloud2208/httpwebpagecontainer:latest
+           ports:
+               - containerPort: 80
+                 protocol: TCP

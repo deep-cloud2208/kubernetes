@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+     name: k8s-service-pod
+     labels:
+        env: training
+        chapter: services
+spec:
+     containers:
+     - name: httpwebpage
+       image: deepcloud2208/httpwebpagecontainer:latest

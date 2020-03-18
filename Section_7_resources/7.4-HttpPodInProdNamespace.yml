@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+      name: deployment-with-replicas
+      labels:
+         env: nstraining
+spec:
+   replicas: 3
+   selector:
+      matchLabels:
+         topic: namespace-pods
+   template:
+      metadata:
+         name: prod-pod
+         labels:
+            topic: namespace-pods
+      spec:
+         containers:
+         - name: httpwebpage
+           image: deepcloud2208/httpwebpagecontainer:latest

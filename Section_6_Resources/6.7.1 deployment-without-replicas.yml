@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+      name: deployment-without-replicas
+      labels:
+         env: deploymenttraining
+spec:
+   selector:
+      matchLabels:
+         topic: deploymentpods
+   template:
+      metadata:
+         name: standalonepod
+         labels:
+            topic: deploymentpods 
+      spec:
+         containers:
+         - name: httpwebpage
+           image: deepcloud2208/httpwebpagecontainer:latest

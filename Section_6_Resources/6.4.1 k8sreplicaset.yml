@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+      name: k8sreplicaset
+      labels:
+         env: replicasetdemo
+spec:
+   replicas: 5
+   selector:
+      matchLabels:
+         env: k8straining
+   template:
+      metadata:
+         name: k8s-rs-demo
+         labels:
+            env: k8straining
+      spec:
+         containers:
+         - name: pythonwebpage
+           image: deepcloud2208/k8s-eks-gke:latest
+           env:
+           - name: NAME
+             value: "k8s ReplicaSet Demo"

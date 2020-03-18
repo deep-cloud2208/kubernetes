@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+     name: pod-nontemplatedpod
+     labels:
+        env: k8straining
+spec:
+     containers:
+     - name: pythonwebpage
+       image: deepcloud2208/k8s-eks-gke:latest
+       env:
+       - name: NAME
+         value: "python container inside a pod"

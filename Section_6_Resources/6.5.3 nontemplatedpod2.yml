@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+     name: standalonepod2
+     labels:
+        purpose: demo
+        topic: k8sreplicaset
+        subtopic: nontemplatedpod
+spec:
+     containers:
+     - name: httpwebpage
+       image: deepcloud2208/httpwebpagecontainer:latest
